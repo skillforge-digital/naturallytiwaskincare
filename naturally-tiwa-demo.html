@@ -44,6 +44,7 @@
   .eyebrow::before{content:''; width:26px; height:1px; background:var(--honey);}
   .wrap{max-width:1220px; margin:0 auto; padding:0 40px;}
   img,.ph{display:block; width:100%; height:100%; object-fit:cover;}
+  .media-fill{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
   button{font-family:inherit; cursor:pointer; border:none;}
 
   /* Buttons */
@@ -101,6 +102,8 @@
     background:linear-gradient(160deg,#DDD3B4 0%, var(--honey-light) 45%, var(--olive) 130%);
     box-shadow:var(--shadow); overflow:hidden;
   }
+  .hero-visual.has-media::before,
+  .founder-media.has-media::before{display:none;}
   .hero-visual::before{
     content:'YARA'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
     font-family:'Fraunces',serif; font-style:italic; font-size:52px; color:rgba(255,255,255,0.55);
@@ -152,7 +155,7 @@
   .prod-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
   .prod-card{background:var(--cream); border-radius:20px; overflow:hidden; box-shadow:0 10px 26px rgba(38,48,31,.06); transition:box-shadow .35s, transform .35s;}
   .prod-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
-  .prod-media{position:relative; aspect-ratio:1/1.1; background:linear-gradient(150deg,#E9E0C7,#C6862F22);}
+  .prod-media{position:relative; aspect-ratio:1/1.1; background:linear-gradient(150deg,#E9E0C7,#C6862F22); overflow:hidden;}
   .prod-media .ph{background:none; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-style:italic; font-size:26px; color:var(--olive); opacity:.5;}
   .prod-hover{
     position:absolute; inset:auto 12px 12px 12px; background:var(--olive-deep); color:var(--cream);
@@ -203,7 +206,7 @@
 
   /* ===== Founder ===== */
   .founder{display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; align-items:center;}
-  .founder-media{aspect-ratio:4/5; border-radius:26px; background:linear-gradient(165deg,var(--clay),var(--olive-deep)); position:relative; box-shadow:var(--shadow);}
+  .founder-media{aspect-ratio:4/5; border-radius:26px; background:linear-gradient(165deg,var(--clay),var(--olive-deep)); position:relative; box-shadow:var(--shadow); overflow:hidden;}
   .founder-media::before{content:'EST.'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-style:italic; font-size:40px; color:rgba(255,255,255,.5);}
   .founder-quote{font-family:'Fraunces',serif; font-size:clamp(22px,2.6vw,32px); font-weight:400; line-height:1.4; color:var(--olive-deep);}
   .founder-name{margin-top:22px; font-size:14px; font-weight:700; letter-spacing:.04em;}
@@ -224,7 +227,7 @@
   /* ===== Blog ===== */
   .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
   .blog-card{border-radius:20px; overflow:hidden; background:var(--cream); border:1px solid var(--line);}
-  .blog-media{aspect-ratio:16/10; background:linear-gradient(150deg,#E4D9BC,#B8735A44);}
+  .blog-media{aspect-ratio:16/10; background:linear-gradient(150deg,#E4D9BC,#B8735A44); position:relative; overflow:hidden;}
   .blog-body{padding:22px;}
   .blog-body .tag{font-family:'DM Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--honey);}
   .blog-body h4{font-size:18px; margin:8px 0 10px;}
@@ -233,7 +236,7 @@
 
   /* ===== Instagram ===== */
   .insta-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px;}
-  .insta-item{aspect-ratio:1/1; border-radius:12px; background:linear-gradient(160deg,#DED2AE,#8B9A72);}
+  .insta-item{aspect-ratio:1/1; border-radius:12px; background:linear-gradient(160deg,#DED2AE,#8B9A72); position:relative; overflow:hidden;}
   .insta-item:nth-child(2n){background:linear-gradient(160deg,var(--honey-light),var(--clay));}
   .insta-item:nth-child(3n){background:linear-gradient(160deg,#B8735A,var(--olive-deep));}
   @media(max-width:900px){ .insta-grid{grid-template-columns:repeat(3,1fr);} }
@@ -296,7 +299,8 @@
       <a class="btn btn-ghost" href="#solution">Find your solution</a>
     </div>
   </div>
-  <div class="hero-visual">
+  <div class="hero-visual has-media">
+    <img class="media-fill" src="assets/hero-banner.png" alt="Naturally Tiwa campaign banner">
     <div class="hero-badge">
       <div class="dot">44</div>
       <p><strong>Loved by thousands</strong>Real reviews from real skin journeys</p>
@@ -319,10 +323,10 @@
       <p>Every formula is built around a condition, not just a category — so you can shop by what your skin actually needs.</p>
     </div>
     <div class="cat-grid">
-      <div class="cat-card cat1 reveal"><span>01 · Sensitive</span><h3>Eczema</h3></div>
-      <div class="cat-card cat2 reveal"><span>02 · Sensitive</span><h3>Psoriasis</h3></div>
-      <div class="cat-card cat3 reveal"><span>03 · Sensitive</span><h3>Rosacea</h3></div>
-      <div class="cat-card cat4 reveal"><span>04 · Everyday</span><h3>Dry Skin</h3></div>
+      <div class="cat-card cat1 reveal"><img class="media-fill" src="assets/category-eczema.jpg" alt="Naturally Tiwa skincare body care image"><span>01 · Sensitive</span><h3>Eczema</h3></div>
+      <div class="cat-card cat2 reveal"><img class="media-fill" src="assets/category-psoriasis.jpg" alt="Naturally Tiwa skincare hair care image"><span>02 · Sensitive</span><h3>Psoriasis</h3></div>
+      <div class="cat-card cat3 reveal"><img class="media-fill" src="assets/category-rosacea.jpg" alt="Naturally Tiwa skincare facial care image"><span>03 · Sensitive</span><h3>Rosacea</h3></div>
+      <div class="cat-card cat4 reveal"><img class="media-fill" src="assets/category-dry-skin.png" alt="Naturally Tiwa skincare wash product image"><span>04 · Everyday</span><h3>Dry Skin</h3></div>
     </div>
   </div>
 </section>
@@ -336,19 +340,19 @@
     </div>
     <div class="prod-grid">
       <div class="prod-card reveal">
-        <div class="prod-media"><div class="ph">Yara</div><div class="prod-hover">+ Add to Cart</div></div>
+        <div class="prod-media"><img class="media-fill" src="assets/product-yara.png" alt="Yara Body Food"><div class="prod-hover">+ Add to Cart</div></div>
         <div class="prod-info"><div class="tag">Body Food</div><h4>Yara Body Food</h4><div class="price">£46.00 · 44 reviews</div></div>
       </div>
       <div class="prod-card reveal">
-        <div class="prod-media"><div class="ph">Iya</div><div class="prod-hover">+ Add to Cart</div></div>
+        <div class="prod-media"><img class="media-fill" src="assets/product-iya.png" alt="Iya Body Food"><div class="prod-hover">+ Add to Cart</div></div>
         <div class="prod-info"><div class="tag">Body Food</div><h4>Iya Body Food</h4><div class="price">£45.00 · 41 reviews</div></div>
       </div>
       <div class="prod-card reveal">
-        <div class="prod-media"><div class="ph">Agu</div><div class="prod-hover">+ Add to Cart</div></div>
+        <div class="prod-media"><img class="media-fill" src="assets/product-agu.png" alt="Agu Body Food"><div class="prod-hover">+ Add to Cart</div></div>
         <div class="prod-info"><div class="tag">Body Food</div><h4>Agu Body Food</h4><div class="price">£45.00 · 22 reviews</div></div>
       </div>
       <div class="prod-card reveal">
-        <div class="prod-media"><div class="ph">Oroma</div><div class="prod-hover">+ Add to Cart</div></div>
+        <div class="prod-media"><img class="media-fill" src="assets/product-oroma.png" alt="Oroma Body Wash"><div class="prod-hover">+ Add to Cart</div></div>
         <div class="prod-info"><div class="tag">Body Wash</div><h4>Oroma Body Wash</h4><div class="price">£33.00 · 14 reviews</div></div>
       </div>
     </div>
@@ -400,7 +404,7 @@
 <section id="founder">
   <div class="wrap">
     <div class="founder">
-      <div class="founder-media reveal"></div>
+      <div class="founder-media reveal has-media"><img class="media-fill" src="assets/founder-tiwa.png" alt="Shalom Lloyd for Naturally Tiwa"></div>
       <div class="reveal">
         <div class="eyebrow">Our story</div>
         <p class="founder-quote">"I built Naturally Tiwa because my own family's skin needed something the shelves didn't have — something honest, natural, and made to actually work."</p>
@@ -444,9 +448,9 @@
       <h2>Latest articles &amp; insights</h2>
     </div>
     <div class="blog-grid">
-      <div class="blog-card reveal"><div class="blog-media"></div><div class="blog-body"><div class="tag">Eczema</div><h4>Managing flare‑ups through winter</h4><p>Simple, natural habits that help keep reactive skin calm when the weather turns.</p></div></div>
-      <div class="blog-card reveal"><div class="blog-media"></div><div class="blog-body"><div class="tag">Ingredients</div><h4>Why shea butter works so well</h4><p>A closer look at the science behind our most‑used ingredient.</p></div></div>
-      <div class="blog-card reveal"><div class="blog-media"></div><div class="blog-body"><div class="tag">Community</div><h4>Real routines from real customers</h4><p>How three members of our community built their skin routine around Naturally Tiwa.</p></div></div>
+      <div class="blog-card reveal"><div class="blog-media"><img class="media-fill" src="assets/journal-before-after.png" alt="Naturally Tiwa skincare before and after results"></div><div class="blog-body"><div class="tag">Eczema</div><h4>Managing flare‑ups through winter</h4><p>Simple, natural habits that help keep reactive skin calm when the weather turns.</p></div></div>
+      <div class="blog-card reveal"><div class="blog-media"><img class="media-fill" src="assets/journal-map.webp" alt="Naturally Tiwa ingredient sourcing map"></div><div class="blog-body"><div class="tag">Ingredients</div><h4>Why shea butter works so well</h4><p>A closer look at the science behind our most‑used ingredient.</p></div></div>
+      <div class="blog-card reveal"><div class="blog-media"><img class="media-fill" src="assets/journal-yara.png" alt="Naturally Tiwa Yara Body Food product image"></div><div class="blog-body"><div class="tag">Community</div><h4>Real routines from real customers</h4><p>How three members of our community built their skin routine around Naturally Tiwa.</p></div></div>
     </div>
   </div>
 </section>
@@ -458,8 +462,8 @@
       <h2>Join the community</h2>
     </div>
     <div class="insta-grid">
-      <div class="insta-item"></div><div class="insta-item"></div><div class="insta-item"></div>
-      <div class="insta-item"></div><div class="insta-item"></div><div class="insta-item"></div>
+      <div class="insta-item"><img class="media-fill" src="assets/insta-1.jpg" alt="Naturally Tiwa skincare close-up"></div><div class="insta-item"><img class="media-fill" src="assets/insta-2.png" alt="Naturally Tiwa founder portrait"></div><div class="insta-item"><img class="media-fill" src="assets/insta-3.png" alt="Naturally Tiwa body scrub"></div>
+      <div class="insta-item"><img class="media-fill" src="assets/insta-4.png" alt="Naturally Tiwa body wash"></div><div class="insta-item"><img class="media-fill" src="assets/insta-5.jpg" alt="Naturally Tiwa body care image"></div><div class="insta-item"><img class="media-fill" src="assets/insta-6.jpg" alt="Naturally Tiwa hair care image"></div>
     </div>
   </div>
 </section>
