@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naturally Tiwa Skincare — Redesign Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#F3EEE1;         /* base background */
+    --sand-deep:#EAE2CE;    /* card / section alt */
+    --ink:#26301F;          /* near-black botanical text */
+    --olive:#3F4A34;        /* primary brand color */
+    --olive-deep:#2B331F;
+    --honey:#C6862F;        /* CTA / shea butter accent */
+    --honey-light:#E7B978;
+    --clay:#B8735A;         /* secondary accent - baobab clay */
+    --cream:#FBF8F0;
+    --line: rgba(38,48,31,0.14);
+    --shadow: 0 20px 50px rgba(38,48,31,0.10);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'DM Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:500; color:var(--olive-deep); line-height:1.08; letter-spacing:-0.01em;}
+  em{font-style:italic; color:var(--honey); font-weight:500;}
+  a{color:inherit; text-decoration:none;}
+  .eyebrow{
+    font-family:'DM Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--olive);
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--honey);}
+  .wrap{max-width:1220px; margin:0 auto; padding:0 40px;}
+  img,.ph{display:block; width:100%; height:100%; object-fit:cover;}
+  button{font-family:inherit; cursor:pointer; border:none;}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 30px; border-radius:100px;
+    font-size:13.5px; letter-spacing:0.05em; text-transform:uppercase; font-weight:700;
+    transition:all .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-primary{background:var(--olive); color:var(--cream);}
+  .btn-primary:hover{background:var(--olive-deep); transform:translateY(-2px); box-shadow:var(--shadow);}
+  .btn-ghost{border:1.5px solid var(--olive); color:var(--olive); background:transparent;}
+  .btn-ghost:hover{background:var(--olive); color:var(--cream);}
+
+  /* ===== Announcement bar ===== */
+  .announce{
+    background:var(--olive-deep); color:var(--cream);
+    text-align:center; font-size:12.5px; letter-spacing:0.08em;
+    padding:9px 20px; display:flex; align-items:center; justify-content:center; gap:28px;
+    font-family:'DM Mono',monospace;
+  }
+  .announce span{opacity:.55}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(243,238,225,0.88); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 40px; max-width:1220px; margin:0 auto;
+  }
+  .logo{font-family:'Fraunces',serif; font-size:24px; font-weight:600; letter-spacing:-0.01em; color:var(--olive-deep);}
+  .logo em{color:var(--honey);}
+  .navlinks{display:flex; gap:34px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; color:var(--olive-deep);}
+  .navlinks a{position:relative; padding-bottom:4px;}
+  .navlinks a::after{content:'';position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--honey); transition:width .3s;}
+  .navlinks a:hover::after{width:100%;}
+  .navicons{display:flex; gap:20px; align-items:center;}
+  .navicons svg{width:19px; height:19px; stroke:var(--olive-deep);}
+  @media(max-width:900px){ .navlinks{display:none;} }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative; padding:90px 40px 60px; max-width:1220px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  }
+  .hero-eyebrow{margin-bottom:22px;}
+  .hero h1{font-size:clamp(40px,5.4vw,72px); max-width:620px;}
+  .hero p{max-width:440px; margin:26px 0 34px; font-size:16.5px; color:#4B5540;}
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero-visual{
+    position:relative; aspect-ratio:4/5; border-radius:28px;
+    background:linear-gradient(160deg,#DDD3B4 0%, var(--honey-light) 45%, var(--olive) 130%);
+    box-shadow:var(--shadow); overflow:hidden;
+  }
+  .hero-visual::before{
+    content:'YARA'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-style:italic; font-size:52px; color:rgba(255,255,255,0.55);
+    letter-spacing:0.02em;
+  }
+  .hero-badge{
+    position:absolute; left:-18px; bottom:36px; background:var(--cream); border-radius:18px;
+    padding:16px 20px; box-shadow:var(--shadow); display:flex; gap:12px; align-items:center; max-width:230px;
+  }
+  .hero-badge .dot{width:38px; height:38px; border-radius:50%; background:var(--olive); flex:none; display:flex; align-items:center; justify-content:center; color:var(--cream); font-family:'Fraunces',serif; font-style:italic;}
+  .hero-badge p{margin:0; font-size:12px; color:var(--ink); max-width:none;}
+  .hero-badge strong{display:block; font-size:13px; font-weight:700;}
+  @media(max-width:880px){ .hero{grid-template-columns:1fr; padding-top:56px;} .hero-visual{order:-1;} }
+
+  /* ===== Marquee ===== */
+  .marquee-strip{background:var(--olive); color:var(--cream); padding:22px 0; overflow:hidden; white-space:nowrap;}
+  .marquee-track{display:inline-flex; gap:60px; animation:scroll 32s linear infinite; font-family:'Fraunces',serif; font-style:italic; font-size:22px;}
+  .marquee-track span{display:flex; align-items:center; gap:60px;}
+  .marquee-track b{font-family:'DM Mono',monospace; font-style:normal; font-size:12px; letter-spacing:.12em; color:var(--honey-light); text-transform:uppercase; margin-right:60px;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  section{padding:110px 0;}
+  .section-head{max-width:600px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(30px,3.6vw,46px); margin-top:16px;}
+  .section-head p{margin-top:16px; color:#4B5540; font-size:15.5px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-head.center .eyebrow{justify-content:center;}
+  .section-head.center .eyebrow::before{display:none;}
+
+  /* ===== Categories ===== */
+  .cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .cat-card{
+    position:relative; aspect-ratio:3/4; border-radius:22px; overflow:hidden;
+    display:flex; align-items:flex-end; padding:26px; color:var(--cream);
+    transition:transform .4s; cursor:pointer;
+  }
+  .cat-card:hover{transform:translateY(-8px);}
+  .cat-card h3{color:var(--cream); font-size:22px; position:relative; z-index:2;}
+  .cat-card span{position:relative; z-index:2; font-size:12px; letter-spacing:.08em; text-transform:uppercase; opacity:.85; font-family:'DM Mono',monospace;}
+  .cat-card::after{content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(20,24,15,.75) 0%, rgba(20,24,15,0) 55%);}
+  .cat1{background:linear-gradient(160deg,#8B9A72,var(--olive));}
+  .cat2{background:linear-gradient(160deg,var(--honey-light),var(--honey));}
+  .cat3{background:linear-gradient(160deg,#D8B49C,var(--clay));}
+  .cat4{background:linear-gradient(160deg,#6E7A5C,var(--olive-deep));}
+  @media(max-width:900px){ .cat-grid{grid-template-columns:repeat(2,1fr);} }
+
+  /* ===== Products ===== */
+  .alt-bg{background:var(--sand-deep);}
+  .prod-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .prod-card{background:var(--cream); border-radius:20px; overflow:hidden; box-shadow:0 10px 26px rgba(38,48,31,.06); transition:box-shadow .35s, transform .35s;}
+  .prod-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .prod-media{position:relative; aspect-ratio:1/1.1; background:linear-gradient(150deg,#E9E0C7,#C6862F22);}
+  .prod-media .ph{background:none; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-style:italic; font-size:26px; color:var(--olive); opacity:.5;}
+  .prod-hover{
+    position:absolute; inset:auto 12px 12px 12px; background:var(--olive-deep); color:var(--cream);
+    border-radius:14px; padding:12px; text-align:center; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; font-weight:700;
+    transform:translateY(70px); opacity:0; transition:all .35s;
+  }
+  .prod-card:hover .prod-hover{transform:translateY(0); opacity:1;}
+  .prod-info{padding:18px 18px 22px;}
+  .prod-info .tag{font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--honey);}
+  .prod-info h4{font-size:18px; margin:6px 0 4px;}
+  .prod-info .price{font-size:14px; color:#4B5540;}
+  @media(max-width:1000px){ .prod-grid{grid-template-columns:repeat(2,1fr);} }
+
+  /* ===== Ingredients orbit ===== */
+  .orbit-wrap{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:center;}
+  .orbit{position:relative; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;}
+  .orbit-ring{position:absolute; border:1px dashed var(--line); border-radius:50%;}
+  .orbit-ring.r1{inset:0;}
+  .orbit-center{
+    width:34%; aspect-ratio:1/1; border-radius:50%; background:radial-gradient(circle at 35% 30%, var(--honey-light), var(--olive) 80%);
+    display:flex; align-items:center; justify-content:center; text-align:center; color:var(--cream); z-index:3; box-shadow:var(--shadow);
+    font-family:'Fraunces',serif; font-style:italic; font-size:20px; padding:10px;
+  }
+  .orbit-node{
+    position:absolute; background:var(--cream); border-radius:16px; padding:11px 16px; box-shadow:0 8px 20px rgba(38,48,31,.10);
+    font-size:12.5px; font-weight:700; display:flex; align-items:center; gap:8px; white-space:nowrap; transition:transform .3s;
+  }
+  .orbit-node:hover{transform:scale(1.07); z-index:5;}
+  .orbit-node i{width:8px; height:8px; border-radius:50%; background:var(--honey); display:inline-block;}
+  .n1{top:2%; left:50%; transform:translateX(-50%);}
+  .n2{top:26%; right:0%;}
+  .n3{bottom:22%; right:2%;}
+  .n4{bottom:2%; left:50%; transform:translateX(-50%);}
+  .n5{bottom:22%; left:0%;}
+  .n6{top:26%; left:-2%;}
+  .ing-list{list-style:none; margin-top:26px; display:flex; flex-direction:column; gap:16px;}
+  .ing-list li{display:flex; gap:16px; align-items:flex-start; padding-bottom:16px; border-bottom:1px solid var(--line);}
+  .ing-list b{font-family:'DM Mono',monospace; font-size:12px; color:var(--honey); flex:none; width:26px; padding-top:3px;}
+  @media(max-width:900px){ .orbit-wrap{grid-template-columns:1fr;} .orbit{max-width:420px; margin:0 auto;} }
+
+  /* ===== How to use ===== */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:30px;}
+  .step{padding:34px 30px; background:var(--cream); border-radius:20px; border:1px solid var(--line);}
+  .step .num{font-family:'Fraunces',serif; font-style:italic; font-size:34px; color:var(--honey);}
+  .step h4{margin:14px 0 10px; font-size:19px;}
+  .step p{font-size:14.5px; color:#4B5540;}
+  @media(max-width:880px){ .steps{grid-template-columns:1fr;} }
+
+  /* ===== Founder ===== */
+  .founder{display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; align-items:center;}
+  .founder-media{aspect-ratio:4/5; border-radius:26px; background:linear-gradient(165deg,var(--clay),var(--olive-deep)); position:relative; box-shadow:var(--shadow);}
+  .founder-media::before{content:'EST.'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-style:italic; font-size:40px; color:rgba(255,255,255,.5);}
+  .founder-quote{font-family:'Fraunces',serif; font-size:clamp(22px,2.6vw,32px); font-weight:400; line-height:1.4; color:var(--olive-deep);}
+  .founder-name{margin-top:22px; font-size:14px; font-weight:700; letter-spacing:.04em;}
+  .founder-name span{display:block; font-weight:400; font-size:12.5px; color:#4B5540; margin-top:2px; font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.08em;}
+  .awards-strip{display:flex; gap:34px; margin-top:34px; flex-wrap:wrap;}
+  .award{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; font-family:'DM Mono',monospace; color:var(--olive); border-left:2px solid var(--honey); padding-left:10px;}
+  @media(max-width:880px){ .founder{grid-template-columns:1fr;} }
+
+  /* ===== Testimonials ===== */
+  .test-track{display:flex; gap:22px; overflow:hidden;}
+  .test-scroll{display:flex; gap:22px; animation:tscroll 40s linear infinite;}
+  .test-card{flex:none; width:340px; background:var(--cream); border-radius:20px; padding:28px; border:1px solid var(--line);}
+  .stars{color:var(--honey); font-size:14px; letter-spacing:2px; margin-bottom:14px;}
+  .test-card p{font-size:14.5px; color:var(--ink); margin-bottom:18px;}
+  .test-who{font-size:12.5px; font-weight:700; color:var(--olive-deep);}
+  @keyframes tscroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ===== Blog ===== */
+  .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .blog-card{border-radius:20px; overflow:hidden; background:var(--cream); border:1px solid var(--line);}
+  .blog-media{aspect-ratio:16/10; background:linear-gradient(150deg,#E4D9BC,#B8735A44);}
+  .blog-body{padding:22px;}
+  .blog-body .tag{font-family:'DM Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--honey);}
+  .blog-body h4{font-size:18px; margin:8px 0 10px;}
+  .blog-body p{font-size:13.5px; color:#4B5540;}
+  @media(max-width:900px){ .blog-grid{grid-template-columns:1fr;} }
+
+  /* ===== Instagram ===== */
+  .insta-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px;}
+  .insta-item{aspect-ratio:1/1; border-radius:12px; background:linear-gradient(160deg,#DED2AE,#8B9A72);}
+  .insta-item:nth-child(2n){background:linear-gradient(160deg,var(--honey-light),var(--clay));}
+  .insta-item:nth-child(3n){background:linear-gradient(160deg,#B8735A,var(--olive-deep));}
+  @media(max-width:900px){ .insta-grid{grid-template-columns:repeat(3,1fr);} }
+
+  /* ===== Footer ===== */
+  footer{background:var(--olive-deep); color:var(--cream); padding:80px 0 30px;}
+  .foot-top{display:grid; grid-template-columns:1.3fr 0.8fr 0.8fr 0.8fr 1.1fr; gap:40px; padding-bottom:60px; border-bottom:1px solid rgba(255,255,255,.12);}
+  .foot-logo{font-family:'Fraunces',serif; font-size:24px; margin-bottom:14px;}
+  .foot-top p{font-size:13.5px; color:rgba(255,255,255,.65); max-width:260px;}
+  .foot-col h5{font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--honey-light); margin-bottom:16px;}
+  .foot-col a{display:block; font-size:13.5px; color:rgba(255,255,255,.75); margin-bottom:10px;}
+  .foot-news input{width:100%; padding:13px 16px; border-radius:100px; border:1px solid rgba(255,255,255,.25); background:transparent; color:var(--cream); font-size:13px; margin-bottom:10px;}
+  .foot-news input::placeholder{color:rgba(255,255,255,.5);}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; font-size:12px; color:rgba(255,255,255,.5); flex-wrap:wrap; gap:12px;}
+  @media(max-width:900px){ .foot-top{grid-template-columns:repeat(2,1fr);} }
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  .demo-tag{
+    position:fixed; bottom:18px; right:18px; z-index:999;
+    background:var(--olive-deep); color:var(--cream); font-family:'DM Mono',monospace;
+    font-size:11px; letter-spacing:.05em; padding:9px 14px; border-radius:100px; opacity:.85;
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-tag">DEMO CONCEPT — not the live site</div>
+
+<div class="announce"><span>Free UK delivery over £40</span><span>·</span><span>Est. shea butter, coconut & baobab formulas</span><span>·</span><span>Vegan &amp; cruelty‑free</span></div>
+
+<header>
+  <div class="nav">
+    <div class="logo">naturally<em>tiwa</em></div>
+    <nav class="navlinks">
+      <a href="#">Home</a>
+      <a href="#products">Shop</a>
+      <a href="#solution">Find Your Skin Solution</a>
+      <a href="#ingredients">Skin Library</a>
+      <a href="#founder">Our Story</a>
+      <a href="#">Clinics &amp; Partners</a>
+      <a href="#community">Community</a>
+    </nav>
+    <div class="navicons">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><path d="M20 21a8 8 0 10-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><path d="M6 2l1.5 4M18 2l-1.5 4M3 8h18l-1.5 12H4.5L3 8z"/></svg>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding-top:70px;">
+  <div>
+    <div class="eyebrow hero-eyebrow">Naturally Tiwa Skincare</div>
+    <h1>Skin that's <em>struggling</em>, made calm again — naturally.</h1>
+    <p>Award‑winning shea butter and coconut formulas built for eczema, psoriasis, rosacea and everyday sensitive skin. Vegan, cruelty‑free, and gentle enough for the whole family, from birth.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#products">Shop Best Sellers</a>
+      <a class="btn btn-ghost" href="#solution">Find your solution</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-badge">
+      <div class="dot">44</div>
+      <p><strong>Loved by thousands</strong>Real reviews from real skin journeys</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span><b>The Skin Journey</b> Soothes Eczema &nbsp;·&nbsp; Calms Rosacea &nbsp;·&nbsp; Repairs Barrier &nbsp;·&nbsp; Safe From Birth &nbsp;·&nbsp; 100% Natural</span>
+    <span><b>The Skin Journey</b> Soothes Eczema &nbsp;·&nbsp; Calms Rosacea &nbsp;·&nbsp; Repairs Barrier &nbsp;·&nbsp; Safe From Birth &nbsp;·&nbsp; 100% Natural</span>
+  </div>
+</div>
+
+<section id="solution">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Shop by concern</div>
+      <h2>Start with your skin's story</h2>
+      <p>Every formula is built around a condition, not just a category — so you can shop by what your skin actually needs.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card cat1 reveal"><span>01 · Sensitive</span><h3>Eczema</h3></div>
+      <div class="cat-card cat2 reveal"><span>02 · Sensitive</span><h3>Psoriasis</h3></div>
+      <div class="cat-card cat3 reveal"><span>03 · Sensitive</span><h3>Rosacea</h3></div>
+      <div class="cat-card cat4 reveal"><span>04 · Everyday</span><h3>Dry Skin</h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg" id="products">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Best sellers</div>
+      <h2>Formulated with a job to do</h2>
+      <p>Each product is named for the skin it protects — from the Hausa words for child, mother and beyond.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card reveal">
+        <div class="prod-media"><div class="ph">Yara</div><div class="prod-hover">+ Add to Cart</div></div>
+        <div class="prod-info"><div class="tag">Body Food</div><h4>Yara Body Food</h4><div class="price">£46.00 · 44 reviews</div></div>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-media"><div class="ph">Iya</div><div class="prod-hover">+ Add to Cart</div></div>
+        <div class="prod-info"><div class="tag">Body Food</div><h4>Iya Body Food</h4><div class="price">£45.00 · 41 reviews</div></div>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-media"><div class="ph">Agu</div><div class="prod-hover">+ Add to Cart</div></div>
+        <div class="prod-info"><div class="tag">Body Food</div><h4>Agu Body Food</h4><div class="price">£45.00 · 22 reviews</div></div>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-media"><div class="ph">Oroma</div><div class="prod-hover">+ Add to Cart</div></div>
+        <div class="prod-info"><div class="tag">Body Wash</div><h4>Oroma Body Wash</h4><div class="price">£33.00 · 14 reviews</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ingredients">
+  <div class="wrap">
+    <div class="orbit-wrap">
+      <div class="orbit reveal">
+        <div class="orbit-ring r1"></div>
+        <div class="orbit-center">Yara<br>Body Food</div>
+        <div class="orbit-node n1"><i></i>Shea Butter</div>
+        <div class="orbit-node n2"><i></i>Coconut Oil</div>
+        <div class="orbit-node n3"><i></i>Jojoba Seed Oil</div>
+        <div class="orbit-node n4"><i></i>Baobab Seed Oil</div>
+        <div class="orbit-node n5"><i></i>Calendula</div>
+        <div class="orbit-node n6"><i></i>Sunflower Oil</div>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">The Skin Library</div>
+        <h2>What's actually in the jar</h2>
+        <p style="color:#4B5540; margin-top:14px;">No mystery blends. Every ingredient is chosen for a reason, and every product tells you exactly what that reason is.</p>
+        <ul class="ing-list">
+          <li><b>01</b><div><strong>Shea Butter</strong> — deep, lasting nourishment for compromised skin barriers.</div></li>
+          <li><b>02</b><div><strong>Coconut Oil</strong> — softens and seals in moisture on very dry patches.</div></li>
+          <li><b>03</b><div><strong>Baobab Seed Oil</strong> — rich in nutrients that support skin repair over time.</div></li>
+          <li><b>04</b><div><strong>Calendula Extract</strong> — traditionally used to calm irritated, reactive skin.</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How to use</div>
+      <h2>Three steps, twice a day</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">01</div><h4>Warm it</h4><p>Rub a small amount between your palms to gently melt the shea butter before applying.</p></div>
+      <div class="step reveal"><div class="num">02</div><h4>Apply</h4><p>Smooth over the targeted area using slow, even strokes — face, body, or both.</p></div>
+      <div class="step reveal"><div class="num">03</div><h4>Repeat</h4><p>Use morning and night for the most noticeable improvement in dry or reactive skin.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="founder">
+  <div class="wrap">
+    <div class="founder">
+      <div class="founder-media reveal"></div>
+      <div class="reveal">
+        <div class="eyebrow">Our story</div>
+        <p class="founder-quote">"I built Naturally Tiwa because my own family's skin needed something the shelves didn't have — something honest, natural, and made to actually work."</p>
+        <div class="founder-name">Shalom Lloyd<span>Founder, Naturally Tiwa Skincare</span></div>
+        <div class="awards-strip">
+          <div class="award">Award‑Winning Formulas</div>
+          <div class="award">Featured At Harrods</div>
+          <div class="award">Vegan Certified</div>
+          <div class="award">Cruelty‑Free</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-bottom:44px;">
+      <div class="eyebrow">Real results</div>
+      <h2>Skin stories from our community</h2>
+    </div>
+  </div>
+  <div class="test-track">
+    <div class="test-scroll">
+      <div class="test-card"><div class="stars">★★★★★</div><p>"Within a week the eczema on my legs was noticeably less itchy. This is the first product that's ever actually worked."</p><div class="test-who">Chidinma R.</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>"My toddler's eczema patches have healed so much faster since we started using this. A little really does go a long way."</p><div class="test-who">Amara O.</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>"Deeply moisturising without feeling heavy. My skin finally feels calm overnight instead of tight and dry."</p><div class="test-who">Rebecca T.</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>"After chemotherapy my skin reacted to almost everything. This was the one product that didn't fight back."</p><div class="test-who">Grace M.</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>"Beautifully packaged and it actually delivers. My dry feet have never looked better."</p><div class="test-who">Funmi A.</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>"Within a week the eczema on my legs was noticeably less itchy. This is the first product that's ever actually worked."</p><div class="test-who">Chidinma R.</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>"My toddler's eczema patches have healed so much faster since we started using this. A little really does go a long way."</p><div class="test-who">Amara O.</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>"Deeply moisturising without feeling heavy. My skin finally feels calm overnight instead of tight and dry."</p><div class="test-who">Rebecca T.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Skin Library / Journal</div>
+      <h2>Latest articles &amp; insights</h2>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal"><div class="blog-media"></div><div class="blog-body"><div class="tag">Eczema</div><h4>Managing flare‑ups through winter</h4><p>Simple, natural habits that help keep reactive skin calm when the weather turns.</p></div></div>
+      <div class="blog-card reveal"><div class="blog-media"></div><div class="blog-body"><div class="tag">Ingredients</div><h4>Why shea butter works so well</h4><p>A closer look at the science behind our most‑used ingredient.</p></div></div>
+      <div class="blog-card reveal"><div class="blog-media"></div><div class="blog-body"><div class="tag">Community</div><h4>Real routines from real customers</h4><p>How three members of our community built their skin routine around Naturally Tiwa.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg" id="community">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="eyebrow">@naturallytiwa</div>
+      <h2>Join the community</h2>
+    </div>
+    <div class="insta-grid">
+      <div class="insta-item"></div><div class="insta-item"></div><div class="insta-item"></div>
+      <div class="insta-item"></div><div class="insta-item"></div><div class="insta-item"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">naturally<em style="color:var(--honey-light)">tiwa</em></div>
+        <p>Natural, vegan, cruelty‑free skincare for eczema, psoriasis, rosacea and sensitive skin — made with sustainability and traceability at the core.</p>
+      </div>
+      <div class="foot-col"><h5>Shop</h5><a href="#">Best Sellers</a><a href="#">Body Food</a><a href="#">Beard &amp; Shave</a><a href="#">Sets &amp; Kits</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="#">Our Story</a><a href="#">Clinics &amp; Partners</a><a href="#">Community</a><a href="#">Contact</a></div>
+      <div class="foot-col"><h5>Support</h5><a href="#">Skin Library</a><a href="#">Shipping &amp; Returns</a><a href="#">FAQs</a></div>
+      <div class="foot-news"><h5>Stay in the loop</h5><input type="email" placeholder="Your email address"><a class="btn btn-primary" style="width:100%; justify-content:center;" href="#">Subscribe</a></div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Naturally Tiwa Skincare — Redesign Concept</div>
+      <div>Instagram · Facebook · TikTok</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
