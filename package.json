@@ -1,0 +1,26 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://x-access-token:ghu_HOMhII24KMhEIWd7mT03lLK5Cnpbml40CFkG@github.com/skillforge-digital/naturallytiwaskincare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/skillforge-digital/naturallytiwaskincare/issues"
+  },
+  "homepage": "https://github.com/skillforge-digital/naturallytiwaskincare#readme",
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "mime-types": "^3.0.2",
+    "playwright": "^1.61.1"
+  }
+}

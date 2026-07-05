@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Google Sans Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts.gstatic.com/l/font__ec36eaf3f6.woff2") format('woff2');
+  unicode-range: U+2190-2193;
+}
