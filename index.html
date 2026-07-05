@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f7f1e5">
-<title>Naturally Tiwa Skincare — Sensitive Skin, Calmly Treated</title>
+<title>Naturally Tiwa Skincare — Premium Care For Sensitive Skin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,7 +30,10 @@
   }
 
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
+  html{
+    scroll-behavior:smooth;
+    color-scheme:light;
+  }
   body{
     background:
       radial-gradient(circle at top left, rgba(237,201,140,.28), transparent 28%),
@@ -431,6 +434,42 @@
   .proof-band{
     padding:22px 0;
   }
+  .marquee-band{
+    padding:18px 0 8px;
+  }
+  .marquee{
+    position:relative;
+    overflow:hidden;
+    border-top:1px solid rgba(57,68,47,.1);
+    border-bottom:1px solid rgba(57,68,47,.1);
+    background:rgba(255,255,255,.42);
+  }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    min-width:100%;
+    animation:marquee-scroll 24s linear infinite;
+  }
+  .marquee-item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:16px 18px;
+    font-family:'DM Mono', monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--olive-deep);
+    white-space:nowrap;
+  }
+  .marquee-item::after{
+    content:"•";
+    color:rgba(57,68,47,.4);
+  }
+  @keyframes marquee-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
   .proof-grid{
     display:grid;
     grid-template-columns:repeat(4, minmax(0,1fr));
@@ -468,6 +507,79 @@
     margin-top:16px;
     color:#56604c;
     font-size:16px;
+  }
+
+  .solution-grid{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:18px;
+  }
+  .solution-card{
+    display:flex;
+    flex-direction:column;
+    min-height:100%;
+    border-radius:30px;
+    overflow:hidden;
+    background:rgba(255,255,255,.78);
+    border:1px solid rgba(57,68,47,.1);
+    box-shadow:0 16px 34px rgba(31,38,24,.07);
+    transition:
+      transform .25s ease,
+      box-shadow .25s ease,
+      border-color .25s ease;
+  }
+  .solution-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-tight);
+    border-color:rgba(57,68,47,.18);
+  }
+  .solution-content{
+    display:grid;
+    gap:14px;
+    padding:22px 22px 0;
+  }
+  .solution-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    width:max-content;
+    padding:8px 12px;
+    border-radius:999px;
+    background:rgba(247,241,229,.96);
+    border:1px solid rgba(57,68,47,.08);
+    font-family:'DM Mono', monospace;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--olive);
+  }
+  .solution-card h3{
+    font-size:30px;
+  }
+  .solution-card p{
+    color:#58624d;
+    font-size:14px;
+  }
+  .solution-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--olive-deep);
+  }
+  .solution-image{
+    position:relative;
+    margin-top:18px;
+    min-height:240px;
+    background:linear-gradient(150deg, rgba(237,201,140,.22), rgba(57,68,47,.08));
+  }
+  .solution-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
   }
 
   .product-lead{
@@ -1002,6 +1114,107 @@
     border-radius:18px;
   }
 
+  .partner-shell{
+    display:grid;
+    grid-template-columns:minmax(0, .95fr) minmax(0, 1.05fr);
+    gap:24px;
+    align-items:stretch;
+  }
+  .partner-panel,
+  .partner-proof{
+    border-radius:32px;
+    overflow:hidden;
+    border:1px solid rgba(57,68,47,.1);
+  }
+  .partner-panel{
+    padding:34px;
+    background:linear-gradient(150deg, rgba(34,42,28,.98), rgba(57,68,47,.92));
+    color:var(--cream);
+    box-shadow:var(--shadow-tight);
+  }
+  .partner-panel h2{
+    color:var(--cream);
+  }
+  .partner-panel p{
+    margin-top:18px;
+    color:rgba(251,248,240,.78);
+  }
+  .partner-list{
+    list-style:none;
+    display:grid;
+    gap:14px;
+    margin-top:24px;
+  }
+  .partner-list li{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    color:rgba(251,248,240,.9);
+  }
+  .partner-list li::before{
+    content:"";
+    width:8px;
+    height:8px;
+    margin-top:9px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:var(--honey-light);
+  }
+  .partner-proof{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:1px;
+    background:rgba(57,68,47,.12);
+  }
+  .partner-card{
+    padding:26px;
+    background:rgba(255,255,255,.78);
+  }
+  .partner-card strong{
+    display:block;
+    font-family:'DM Mono', monospace;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--olive);
+  }
+  .partner-card h3{
+    margin-top:14px;
+    font-size:26px;
+  }
+  .partner-card p{
+    margin-top:10px;
+    color:#58624d;
+    font-size:14px;
+  }
+
+  .library-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:20px;
+  }
+  .library-card{
+    border-radius:var(--radius-xl);
+    overflow:hidden;
+    border:1px solid rgba(57,68,47,.1);
+    background:rgba(255,255,255,.72);
+  }
+  .library-card figure{
+    aspect-ratio:16 / 10;
+  }
+  .library-card figure img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .library-body{
+    padding:28px;
+  }
+  .library-body p{
+    margin-top:14px;
+    color:#58624d;
+  }
+
   .footer-cta{
     margin-top:10px;
     padding:34px;
@@ -1139,6 +1352,7 @@
     .product-lead,
     .ritual-shell,
     .founder-shell,
+    .partner-shell,
     .journal-shell,
     .footer-cta-shell{
       grid-template-columns:1fr;
@@ -1148,7 +1362,9 @@
       min-height:520px;
     }
     .product-grid,
-    .concern-grid{
+    .concern-grid,
+    .solution-grid,
+    .library-grid{
       grid-template-columns:repeat(2, minmax(0,1fr));
     }
     .results-grid{
@@ -1209,7 +1425,10 @@
     }
     .proof-grid,
     .product-grid,
-    .concern-grid{
+    .concern-grid,
+    .solution-grid,
+    .library-grid,
+    .partner-proof{
       grid-template-columns:1fr;
     }
     .concern-card{
@@ -1224,6 +1443,9 @@
     *::after{
       animation:none !important;
       transition:none !important;
+    }
+    .marquee-track{
+      transform:none !important;
     }
     .reveal{
       opacity:1;
@@ -1251,27 +1473,28 @@
       <img src="assets/logo-header.png" alt="Naturally Tiwa" width="181" height="44" fetchpriority="high">
     </a>
     <nav class="navlinks" aria-label="Primary navigation">
-      <a href="#products">Shop</a>
-      <a href="#solution">Find Your Concern</a>
-      <a href="#ritual">Routine</a>
-      <a href="#ingredients">Ingredients</a>
+      <a href="#main-content">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#solution">Find Your Skin Solution</a>
+      <a href="#library">Skin Library</a>
       <a href="#founder">Our Story</a>
-      <a href="#journal">Journal</a>
+      <a href="#partners">Clinics &amp; Partners</a>
+      <a href="#community">Community</a>
     </nav>
     <div class="nav-actions" aria-label="Quick actions">
-      <a class="icon-link" href="#products" aria-label="Browse products">
+      <a class="icon-link" href="#shop" aria-label="Browse products">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       </a>
-      <a class="icon-link" href="#founder" aria-label="Read our story">
+      <a class="icon-link" href="#library" aria-label="Browse the skin library">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 21a8 8 0 1 0-16 0"></path>
-          <circle cx="12" cy="7" r="4"></circle>
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 0 4 24V4.5A2.5 2.5 0 0 1 6.5 2Z"></path>
         </svg>
       </a>
-      <a class="btn btn-primary" href="#footer-cta">Build Your Routine</a>
+      <a class="btn btn-primary" href="#shop">Shop Best Sellers</a>
     </div>
   </div>
 </header>
@@ -1282,30 +1505,15 @@
       <div class="hero-shell">
         <div class="hero-copy">
           <div class="eyebrow">Sensitive Skin, Calmly Treated</div>
-          <h1>Barrier-first care for eczema, psoriasis, rosacea &amp; deeply dry skin.</h1>
-          <p>Award-winning shea butter, coconut and baobab formulas created for skin that needs relief, not guesswork. Gentle enough for the whole family. Credible enough to become the routine you actually stay with.</p>
+          <h1>Premium, barrier-first care for eczema, psoriasis, rosacea &amp; deeply dry skin.</h1>
+          <p>Gentle shea butter, coconut and baobab formulas built for people who want visible comfort, fewer flare-triggering routines and a calmer path into everyday skincare.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#products">Shop Best Sellers</a>
-            <a class="btn btn-secondary" href="#solution">Find Your Skin Match</a>
+            <a class="btn btn-primary" href="#shop">Shop Best Sellers</a>
           </div>
           <div class="hero-notes" aria-label="Purchase reassurance">
-            <span class="hero-note"><i aria-hidden="true"></i>Featured at Harrods</span>
-            <span class="hero-note"><i aria-hidden="true"></i>From birth onward</span>
-            <span class="hero-note"><i aria-hidden="true"></i>Natural, traceable formulas</span>
-          </div>
-          <div class="hero-proof">
-            <div class="proof-item">
-              <strong>4.9/5</strong>
-              <span>Community-loved ratings across hero products</span>
-            </div>
-            <div class="proof-item">
-              <strong>44+</strong>
-              <span>Reviews on Yara Body Food alone</span>
-            </div>
-            <div class="proof-item">
-              <strong>3</strong>
-              <span>Hero oils powering moisture, softness &amp; repair</span>
-            </div>
+            <span class="hero-note"><i aria-hidden="true"></i>Safe from birth</span>
+            <span class="hero-note"><i aria-hidden="true"></i>Vegan &amp; cruelty-free</span>
+            <span class="hero-note"><i aria-hidden="true"></i>Award-winning formulas</span>
           </div>
         </div>
 
@@ -1329,33 +1537,88 @@
     </div>
   </section>
 
-  <div class="proof-band">
-    <div class="wrap proof-grid">
-      <div class="proof-card reveal">
-        <h3>Problem-Solution Formulation</h3>
-        <p>Built around real skin concerns rather than generic “for all skin” promises.</p>
-      </div>
-      <div class="proof-card reveal">
-        <h3>Ingredient Clarity</h3>
-        <p>Shea butter, coconut oil, baobab and calming botanicals with a job to do.</p>
-      </div>
-      <div class="proof-card reveal">
-        <h3>Routine-Friendly Texture</h3>
-        <p>Rich enough to protect, soft enough to wear daily, simple enough to stick with.</p>
-      </div>
-      <div class="proof-card reveal">
-        <h3>Trusted by Families</h3>
-        <p>Made for sensitive adults, children and anyone rebuilding their skin barrier.</p>
+  <div class="marquee-band">
+    <div class="marquee" aria-label="Brand highlights">
+      <div class="marquee-track">
+        <span class="marquee-item">Free UK Delivery Over £40</span>
+        <span class="marquee-item">Safe From Birth</span>
+        <span class="marquee-item">Vegan &amp; Cruelty-Free</span>
+        <span class="marquee-item">Award-Winning Formulas</span>
+        <span class="marquee-item">Skin-Led Problem Solving</span>
+        <span class="marquee-item">Free UK Delivery Over £40</span>
+        <span class="marquee-item">Safe From Birth</span>
+        <span class="marquee-item">Vegan &amp; Cruelty-Free</span>
+        <span class="marquee-item">Award-Winning Formulas</span>
+        <span class="marquee-item">Skin-Led Problem Solving</span>
       </div>
     </div>
   </div>
 
-  <section id="products">
+  <section id="solution">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Start Here</div>
-        <h2>The ritual most people begin with.</h2>
-        <p>Lead with one hero, then build the rest of the routine around what your skin is telling you right now.</p>
+        <div class="eyebrow">Find Your Skin Solution</div>
+        <h2>Choose your concern first, then move into the right formula.</h2>
+        <p>The category names stay prominent, the visual story stays premium, and the path into the shop feels much easier to understand on the first visit.</p>
+      </div>
+      <div class="solution-grid">
+        <a class="solution-card reveal" href="#shop" aria-label="Explore eczema solutions">
+          <div class="solution-content">
+            <span class="solution-tag">01 · Eczema</span>
+            <h3>Eczema</h3>
+            <p>Barrier-first moisture for skin that feels itchy, cracked or quick to flare after bathing, weather shifts or stress.</p>
+            <span class="solution-link">See Best Match →</span>
+          </div>
+          <div class="solution-image">
+            <img src="assets/category-eczema.jpg" alt="Close-up skincare image representing eczema support" width="713" height="776" loading="lazy">
+          </div>
+        </a>
+
+        <a class="solution-card reveal" href="#shop" aria-label="Explore psoriasis solutions">
+          <div class="solution-content">
+            <span class="solution-tag">02 · Psoriasis</span>
+            <h3>Psoriasis</h3>
+            <p>Richer cushioning for rougher texture, dry plaques and the kind of skin that needs more softness to stay comfortable.</p>
+            <span class="solution-link">See Best Match →</span>
+          </div>
+          <div class="solution-image">
+            <img src="assets/category-psoriasis.jpg" alt="Close-up skincare image representing psoriasis support" width="701" height="768" loading="lazy">
+          </div>
+        </a>
+
+        <a class="solution-card reveal" href="#shop" aria-label="Explore rosacea solutions">
+          <div class="solution-content">
+            <span class="solution-tag">03 · Rosacea</span>
+            <h3>Rosacea</h3>
+            <p>Low-friction hydration for skin that reacts to heat, stress, actives or routines that try to do too much at once.</p>
+            <span class="solution-link">See Best Match →</span>
+          </div>
+          <div class="solution-image">
+            <img src="assets/category-rosacea.jpg" alt="Close-up skincare image representing rosacea support" width="706" height="763" loading="lazy">
+          </div>
+        </a>
+
+        <a class="solution-card reveal" href="#shop" aria-label="Explore dry skin solutions">
+          <div class="solution-content">
+            <span class="solution-tag">04 · Dry Skin</span>
+            <h3>Dry Skin</h3>
+            <p>Daily replenishment that keeps comfort in the routine longer, not just for the first hour after moisturising.</p>
+            <span class="solution-link">See Best Match →</span>
+          </div>
+          <div class="solution-image">
+            <img src="assets/category-dry-skin.png" alt="Close-up skincare image representing dry skin support" width="706" height="767" loading="lazy">
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Shop</div>
+        <h2>Start with the product most customers trust first.</h2>
+        <p>Lead with one hero formula, then build the rest of the routine around the concern your skin is trying to calm right now.</p>
       </div>
 
       <div class="product-lead">
@@ -1396,7 +1659,7 @@
             </div>
           </div>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#footer-cta">Build a Routine</a>
+            <a class="btn btn-primary" href="#footer-cta">Build A Routine</a>
             <a class="btn btn-secondary" href="#ingredients">See Ingredient Story</a>
           </div>
         </div>
@@ -1490,64 +1753,20 @@
     </div>
   </section>
 
-  <section id="solution">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">Find Your Concern</div>
-        <h2>Choose the skin story you are trying to calm.</h2>
-        <p>Every formula is positioned around a real skin state, so the page guides you by need first and product second.</p>
-      </div>
-      <div class="concern-grid">
-        <a class="concern-card reveal" href="#products" aria-label="Explore eczema solutions">
-          <img src="assets/category-eczema.jpg" alt="Close-up skin-care image representing eczema support" width="713" height="776" loading="lazy">
-          <div class="concern-content">
-            <span>01 · Sensitive</span>
-            <h3>Eczema</h3>
-            <p>Barrier-first moisture for skin that flares, itches or cracks easily.</p>
-          </div>
-        </a>
-        <a class="concern-card reveal" href="#products" aria-label="Explore psoriasis solutions">
-          <img src="assets/category-psoriasis.jpg" alt="Close-up skin-care image representing psoriasis support" width="701" height="768" loading="lazy">
-          <div class="concern-content">
-            <span>02 · Restorative</span>
-            <h3>Psoriasis</h3>
-            <p>Richer comfort for texture, rough patches and compromised softness.</p>
-          </div>
-        </a>
-        <a class="concern-card reveal" href="#products" aria-label="Explore rosacea solutions">
-          <img src="assets/category-rosacea.jpg" alt="Close-up skin-care image representing rosacea support" width="706" height="763" loading="lazy">
-          <div class="concern-content">
-            <span>03 · Calming</span>
-            <h3>Rosacea</h3>
-            <p>Gentle, low-friction hydration for skin that dislikes heat, stress or overdoing it.</p>
-          </div>
-        </a>
-        <a class="concern-card reveal" href="#products" aria-label="Explore dry skin solutions">
-          <img src="assets/category-dry-skin.png" alt="Close-up skin-care image representing dry skin support" width="706" height="767" loading="lazy">
-          <div class="concern-content">
-            <span>04 · Everyday</span>
-            <h3>Dry Skin</h3>
-            <p>Daily replenishment when the skin needs lasting comfort without complication.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <section id="ritual">
     <div class="wrap ritual-shell">
       <div class="ritual-image reveal">
         <img src="assets/journal-before-after.png" alt="Before and after skincare results" width="528" height="528" loading="lazy">
         <div class="ritual-overlay">
           <strong>Use morning &amp; night.</strong>
-          <span>Rich texture, slow massage, repeatable routine. The goal is consistency your skin can feel.</span>
+          <span>Simple, repeatable steps keep the routine clear and help the texture do the work without adding friction.</span>
         </div>
       </div>
       <div class="ritual-copy">
         <div class="section-head reveal" style="margin-bottom:0;">
-          <div class="eyebrow">The Ritual</div>
+          <div class="eyebrow">How To Use</div>
           <h2>Three calm steps. No drama, no product overload.</h2>
-          <p>The best version of a sensitive-skin routine is one that feels protective, not punishing. Start simple, keep friction low, and let the texture do some of the work.</p>
+          <p>The best version of a sensitive-skin routine feels protective, not punishing. Start simple, keep friction low and let the formula earn repeat use.</p>
         </div>
         <div class="ritual-block reveal">
           <ol class="steps">
@@ -1651,37 +1870,109 @@
     </div>
   </section>
 
-  <section id="journal">
+  <section id="partners">
+    <div class="wrap partner-shell">
+      <article class="partner-panel reveal">
+        <div class="eyebrow" style="color:rgba(251,248,240,.72);">Clinics &amp; Partners</div>
+        <h2 style="margin-top:16px;">The wider brand story reaches beyond one product page.</h2>
+        <p>Across the live site, Naturally Tiwa already speaks to cancer-managing skin, child-friendly care, B Corp credibility and community collaborations. This section turns those signals into a cleaner trust block instead of scattering them across the experience.</p>
+        <ul class="partner-list">
+          <li>Supportive positioning for skin undergoing chemotherapy and radiotherapy.</li>
+          <li>Child-friendly care through the Paw Patrol partnership story.</li>
+          <li>B Corp and award-led brand proof that reinforces trust.</li>
+          <li>A stronger bridge into clinics, stockists and community partners.</li>
+        </ul>
+      </article>
+      <div class="partner-proof reveal">
+        <article class="partner-card">
+          <strong>B Corp</strong>
+          <h3>Values-led credibility</h3>
+          <p>Use certification and brand standards as visible proof, not buried background detail.</p>
+        </article>
+        <article class="partner-card">
+          <strong>Cancer Care</strong>
+          <h3>Support for treatment skin</h3>
+          <p>Highlight formulas already positioned for dryness, peeling, itching and fragile post-treatment skin.</p>
+        </article>
+        <article class="partner-card">
+          <strong>Children</strong>
+          <h3>Family-safe reassurance</h3>
+          <p>Keep the child-friendly story visible for parents looking for calm routines that feel safe from birth.</p>
+        </article>
+        <article class="partner-card">
+          <strong>Community</strong>
+          <h3>Partnerships that feel lived-in</h3>
+          <p>Bring clinics, collaborations and local trust points into one cleaner brand moment near the lower page.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="library">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Skin Library</div>
+        <h2>Education that helps the product make sense.</h2>
+        <p>Use the journal to support discovery, deepen trust and create a stronger SEO path into the brand without overloading the homepage with copy.</p>
+      </div>
+      <div class="library-grid">
+        <article class="library-card reveal">
+          <figure>
+            <img src="assets/journal-map.webp" alt="Ingredient and sourcing visual for the Naturally Tiwa skin library" width="1296" height="580" loading="lazy">
+          </figure>
+          <div class="library-body">
+            <div class="eyebrow">Latest Article</div>
+            <h3 style="margin-top:14px;">Why Shea Butter keeps showing up in the strongest routines.</h3>
+            <p>Explain why the ingredient matters, what it does on compromised skin and how it pairs with baobab and coconut in the barrier story.</p>
+          </div>
+        </article>
+        <article class="library-card reveal">
+          <figure>
+            <img src="assets/journal-yara.png" alt="Naturally Tiwa Yara Body Food product visual for the skin library" width="432" height="407" loading="lazy">
+          </figure>
+          <div class="library-body">
+            <div class="eyebrow">Routine Guide</div>
+            <h3 style="margin-top:14px;">How to layer body food after bathing for longer-lasting comfort.</h3>
+            <p>Turn routine advice into short, useful education that helps customers choose, use and stay consistent with the right formula.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="community">
     <div class="wrap journal-shell">
       <article class="editorial-card reveal">
         <figure>
-          <img src="assets/journal-map.webp" alt="Ingredient sourcing map" width="1296" height="580" loading="lazy">
+          <img src="assets/insta-5.jpg" alt="Naturally Tiwa product photography from the community feed" width="736" height="818" loading="lazy">
         </figure>
         <div class="editorial-body">
-          <div class="eyebrow">Skin Library</div>
-          <h2 style="margin-top:16px;font-size:clamp(32px,4vw,48px);">Education that helps the product make sense.</h2>
-          <p style="margin-top:14px;color:#59624f;">When people understand why an ingredient is there and how it fits into the ritual, price and trust both feel easier to justify. That is where the journal earns its keep.</p>
+          <div class="eyebrow">Community</div>
+          <h2 style="margin-top:16px;font-size:clamp(32px,4vw,48px);">Community moments that keep the brand human.</h2>
+          <p style="margin-top:14px;color:#59624f;">A cleaner social block lets the photography, packaging and routine moments speak more clearly, without turning the page into a wall of competing content.</p>
           <div class="editorial-grid">
             <div class="editorial-mini">
-              <h4>Managing winter flare-ups</h4>
-              <p>Simple, calm habits that stop cold weather from undoing your routine.</p>
+              <h4>Product close-ups</h4>
+              <p>Keep the premium pack shots sharp and editorial so the formulas feel giftable and memorable.</p>
             </div>
             <div class="editorial-mini">
-              <h4>Why shea works so well</h4>
-              <p>A closer look at the ingredient most customers end up remembering by feel.</p>
+              <h4>Routine-led content</h4>
+              <p>Show real use, real texture and real-life placement rather than generic social filler.</p>
             </div>
           </div>
         </div>
       </article>
-      <aside class="community-card reveal" id="community">
+      <aside class="community-card reveal">
         <div class="eyebrow">@naturallytiwa</div>
-        <h2 style="margin-top:16px;font-size:clamp(30px,4vw,42px);">Community moments that keep the brand human.</h2>
-        <p style="margin-top:14px;color:#59624f;">A tighter, cleaner social grid lets the photography do the storytelling without turning the page into a wall of competing content.</p>
+        <h2 style="margin-top:16px;font-size:clamp(30px,4vw,42px);">A tighter, more premium feed preview.</h2>
+        <p style="margin-top:14px;color:#59624f;">This keeps the Instagram section present, but calmer, more editorial and better aligned with the redesign direction from the audit.</p>
         <div class="community-grid">
           <img src="assets/insta-1.jpg" alt="Skincare close-up from the Naturally Tiwa community" width="706" height="763" loading="lazy">
           <img src="assets/insta-2.png" alt="Portrait from the Naturally Tiwa community" width="1024" height="1024" loading="lazy">
           <img src="assets/insta-3.png" alt="Naturally Tiwa product texture shot" width="713" height="776" loading="lazy">
           <img src="assets/insta-4.png" alt="Naturally Tiwa product packaging shot" width="706" height="767" loading="lazy">
+          <img src="assets/insta-5.jpg" alt="Naturally Tiwa product jar from the social feed" width="736" height="818" loading="lazy">
+          <img src="assets/insta-6.jpg" alt="Naturally Tiwa hair product and packaging from the social feed" width="669" height="783" loading="lazy">
         </div>
       </aside>
     </div>
@@ -1693,14 +1984,14 @@
     <div class="footer-cta-shell">
       <div>
         <div class="eyebrow" style="color:rgba(251,248,240,.72);">Stay Close</div>
-        <h2 id="routine-title">Need a gentler place to start? Begin with the routine and build slowly.</h2>
-        <p>Join for product drops, sensitive-skin guidance and the kinds of calm routines people actually keep. No cluttered newsletters, just useful notes and newness when it matters.</p>
+        <h2 id="routine-title">Need a gentler place to start? Build the routine slowly and keep the guidance useful.</h2>
+        <p>Join for product drops, sensitive-skin guidance and routine notes people can actually use. No cluttered blasts, just calm updates and launches when they matter.</p>
       </div>
       <form class="newsletter" id="newsletter-form">
         <label for="email-signup">Email Address</label>
         <div class="newsletter-row">
           <input id="email-signup" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@example.com…" required>
-          <button class="btn btn-dark" type="submit">Subscribe</button>
+          <button class="btn btn-dark" type="submit">Join The List</button>
         </div>
         <div class="newsletter-status" id="newsletter-status" aria-live="polite"></div>
         <small>By subscribing, you agree to receive routine updates, launches and sensitive-skin education from Naturally Tiwa.</small>
@@ -1719,25 +2010,26 @@
       <div class="footer-col">
         <h3>Shop</h3>
         <ul>
-          <li><a href="#products">Best Sellers</a></li>
-          <li><a href="#products">Body Food</a></li>
-          <li><a href="#products">Body Wash</a></li>
+          <li><a href="#shop">Best Sellers</a></li>
+          <li><a href="#shop">Body Food</a></li>
+          <li><a href="#shop">Body Wash</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h3>Learn</h3>
         <ul>
-          <li><a href="#solution">Find Your Concern</a></li>
-          <li><a href="#ritual">Routine</a></li>
-          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#solution">Find Your Skin Solution</a></li>
+          <li><a href="#library">Skin Library</a></li>
+          <li><a href="#ritual">How To Use</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h3>Company</h3>
         <ul>
           <li><a href="#founder">Our Story</a></li>
+          <li><a href="#partners">Clinics &amp; Partners</a></li>
           <li><a href="#community">Community</a></li>
-          <li><a href="#footer-cta">Contact</a></li>
+          <li><a href="#footer-cta">Newsletter</a></li>
         </ul>
       </div>
     </div>
